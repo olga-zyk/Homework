@@ -11,12 +11,13 @@
 <div class="example-wrapper">
     <h1 class="display-5">{{ title }}</h1>
     <ul class="list-group">
-      {% for student in students %}
+      {% for team, data in json %}
+        {% for member in data.members %}
           <li class="list-group-item">
-              <a href="http://127.0.0.1:8800/academy?utm_source=akademija&amp;utm_campaign={{ mentorName }}&amp;utm_term={{ studentName }}&amp;utm_content={{ team }}">{{ student }}</a>
+            <a href="{{ path('evaluation') }}?utm_source=akademija&amp;utm_campaign={{ data.mentor|url_encode }}&amp;utm_term={{ member|url_encode }}&amp;utm_content={{ team|url_encode }}">{{ member }}</a>
           </li>
+        {% endfor %}
       {% endfor %}
     </ul>
 </div>
 {% endblock %}
-

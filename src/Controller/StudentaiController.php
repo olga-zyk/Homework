@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -13,21 +14,31 @@ class StudentaiController extends Controller
      */
     public function index()
     {
-        $data = file_get_contents('./json/data.json');
-        $json = json_decode($data);
+        $dataJson = file_get_contents(__DIR__ . '/json/data.json');
+        $json = json_decode($dataJson, true);
+
 
         return $this->render('studentai/index.html.twig', [
             'title' => 'Studentai',
+            'studentName' => '',
+            'json' => $json,
 
         ]);
     }
 
-    public function evaluation()
+    /**
+     * @Route("/evaluation", name="evaluation")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+
+    public function evaluation(Request $request)
     {
         return $this->render('studentai/evaluation.html.twig', [
-            'studentName' => '',
-            'team' => '',
-            'mentorName' => '',
+            'title' => 'Evaluation',
+            'team' => $request->get('utm_content'),
+            'mentorName' => $request->get('utm_campaign'),
+            'studentName' => $request->get('utm_term'),
+
         ]);
     }
 }
