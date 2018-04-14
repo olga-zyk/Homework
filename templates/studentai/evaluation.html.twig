@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <table class="table">
+        <tbody>
+        <tr>
+            <th scope="row">Komanda</th>
+            <td>{{ team }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Mentorius</th>
+            <td>{{ mentorName }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Laimingasis(-oji)</th>
+            <td>{{ studentName }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="alert alert-success" role="alert">
+        Dešimt balų
+    </div>
+    <a href="http://127.0.0.1:8800/students">Visi dalyviai</a>
+</div>
+{% endblock %}
+
+{#{% for student in students %}#}
+  {#<ul class="list-group">#}
+      {#<li class="list-group-item">#}
+          {#<a href="http://127.0.0.1:8800/academy?utm_source=akademija&amp;utm_campaign=Tomas&amp;utm_term=Elena&amp;utm_content=Po%20pamok%C5%B3">{{ student }}</a>#}
+      {#</li>#}
+  {#</ul>#}
+
+{#{% endfor %}#}
