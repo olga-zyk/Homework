@@ -25,9 +25,16 @@
         </tr>
         </tbody>
     </table>
-    <div class="alert alert-success" role="alert">
-        Dešimt balų
-    </div>
-    <a href="http://127.0.0.1:8800/students">Visi dalyviai</a>
+
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            Dešimt balų
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            Gal pasiseks kitą kartą
+        </div>
+    {% endif %}
+
 </div>
 {% endblock %}

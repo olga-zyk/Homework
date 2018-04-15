@@ -33,12 +33,17 @@ class StudentaiController extends Controller
 
     public function evaluation(Request $request)
     {
+        $success = false;
+        if ($request->get('utm_term') === 'Olga' && $request->get('utm_content') === 'Wish A Gift') {
+            $success = true;
+        }
+
         return $this->render('studentai/evaluation.html.twig', [
             'title' => 'Evaluation',
             'team' => $request->get('utm_content'),
             'mentorName' => $request->get('utm_campaign'),
             'studentName' => $request->get('utm_term'),
-
+            'success' => $success,
         ]);
     }
 }
