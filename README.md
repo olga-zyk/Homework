@@ -194,8 +194,7 @@ docker-compose logs mysql.symfony | grep Warning
 Jei kažką su infrastrutkūrą žiauriai sugadinote, perkurti nuo nulio galima:
 ```
 docker rm -f $(docker ps -aq)
-docker rmi -f kickstartmaster_frontend.symfony
-docker rmi -f kickstartmaster_prod.php.symfony
+bash: docker-compose: command not found
 docker rmi -f kickstartmaster_php.symfony
 ```
 
