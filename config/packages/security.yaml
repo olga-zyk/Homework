@@ -12,6 +12,7 @@ security:
                       roles: 'ROLE_USER'
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
     firewalls:
         dev:
