@@ -12,22 +12,17 @@
       font-weight: 100;
       font-family: 'Lato';
     }
-
-    .title {
-      margin: 20px auto;
-      text-align: center;
-      font-size: 96px;
-    }
   </style>
 {% endblock %}
 
 {% block body %}
   {#<div class="title">NFQ Akademija</div>#}
   <div class="jumbotron">
-    <h1 class="display-4" style="text-align: center">NFQ Akademija</h1>
+    <h1 class="display-4" id="main-page-title">NFQ Akademija</h1>
     <hr class="my-4">
-    <a class="btn btn-success btn-lg" id="btn-on-main-page" href="{{ path('fos_user_registration_register') }}" role="button">Register</a>
+    <a class="btn btn-success btn-lg" id="btn-on-main-page" href="{{ path('fos_user_registration_register') }}">Register</a>
     <a class="btn btn-success btn-lg" id="btn-on-main-page" href="{{ path('fos_user_security_login') }}" role="button">Login</a>
+    <a class="btn btn-success btn-lg" id="btn-on-main-page" href="{{ path('admin') }}" role="button">MyAdmin</a>
 
   </div>
 {% endblock %}

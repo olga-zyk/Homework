@@ -4,20 +4,31 @@
 
 {% block body %}
 
-  {# Do not leave this in production! #}
-  User:
-  {{ dump(app.user) }}
+  <div class="m4 jumbotron">
+    <div class="lead">
+      Hello, {{ app.user.username }}
+      {% if 'ROLE_ADMIN' in app.user.roles %}
+        <button class="btn btn-success" href="{{ path('fos_user_profile_edit') }}">Edit</button>
+      {% endif %}
+      {% if 'ROLE_MENTORIUS' in app.user.roles %}
+        <button class="btn btn-success">Comment</button>
+      {% endif %}
+    </div>
+    {% if app.user.website %}
+      <div class="p2">
+        <a href="{{ app.user.website }}">{{ app.user.website }}</a>
+        <span class="badge badge-secondary">WebSite</span>
+      </div>
+    {% endif %}
+    {% if app.user.linkedin %}
+      <div class="p2">
+        <a href="{{ app.user.linkedin }}">{{ app.user.linkedin }}</a>
+        <span class="badge badge-secondary">WebSite</span>
+      </div>
+    {% endif %}
+  </div>
 
-  {# Do not leave this in production! #}
-  Session:
-  {{ dump(app.session) }}
-
-  Hello {{ app.user.username }}
-  {% if 'ROLE_ADMIN' in app.user.roles %}
-    <button class="btn btn-primary">Edit</button>
-  {% endif %}
-  {% if 'ROLE_MENTOR' in app.user.roles %}
-    <button class="btn btn-info">Comment</button>
-  {% endif %}
-
+  <div class="jumbotron">
+    <a class="btn btn-success btn-lg" href="{{ path('home') }}">Home</a>
+  </div>
 {% endblock %}
