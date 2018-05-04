@@ -3,24 +3,31 @@
 {% block title %}Homepage - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    {{ parent() }}
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-weight: 100;
-            font-family: 'Lato';
-        }
+  <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+  {{ parent() }}
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-weight: 100;
+      font-family: 'Lato';
+    }
 
-        .title {
-            margin: 20px auto;
-            text-align: center;
-            font-size: 96px;
-        }
-    </style>
+    .title {
+      margin: 20px auto;
+      text-align: center;
+      font-size: 96px;
+    }
+  </style>
 {% endblock %}
 
 {% block body %}
-    <div class="title">NFQ Akademija</div>
+  {#<div class="title">NFQ Akademija</div>#}
+  <div class="jumbotron">
+    <h1 class="display-4" style="text-align: center">NFQ Akademija</h1>
+    <hr class="my-4">
+    <a class="btn btn-success btn-lg" id="btn-on-main-page" href="{{ path('fos_user_registration_register') }}" role="button">Register</a>
+    <a class="btn btn-success btn-lg" id="btn-on-main-page" href="{{ path('fos_user_security_login') }}" role="button">Login</a>
+
+  </div>
 {% endblock %}
