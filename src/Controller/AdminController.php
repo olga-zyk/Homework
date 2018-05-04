@@ -16,10 +16,6 @@ class AdminController extends Controller
      */
     public function index(UserInterface $user)
     {
-        if (!$user) {
-            return $this->redirectToRoute('fos_user_security_login');
-        }
-
         return $this->render('admin/index.html.twig');
     }
 
@@ -31,7 +27,7 @@ class AdminController extends Controller
     public function review(UserInterface $user = null)
     {
         if (!$user) {
-            throw new AccessDeniedException('Your user is not authorised');
+            return $this->redirectToRoute('fos_user_security_login');
         }
         if (in_array('ROLE_MENTOR', $user->getRoles())) {
             return $this->render('admin/review.html.twig');
