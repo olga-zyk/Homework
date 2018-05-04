@@ -14,12 +14,14 @@ class MyRegistrationFormType extends AbstractType
     {
         $builder
             ->add('website', UrlType::class)
+            ->add('linkedin', UrlType::class)
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'website' => ''
+            'website' => '',
+            'linkedin' => ''
         ]);
     }
     public function getParent()
