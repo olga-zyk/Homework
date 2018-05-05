@@ -6,33 +6,34 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductsRepository")
+ * @ORM\Table(name="products")
  */
 class Products
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="id", type="integer", length=11, nullable=false)
      */
     private $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(name="price", type="string", length=255, nullable=false)
      */
     private $price;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="category_id", type="integer", length=11, nullable=false)
      */
     private $category_id;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(name="active", type="boolean", nullable=false)
      */
     private $active;
 
@@ -85,6 +86,24 @@ class Products
     public function setActive(bool $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
+
+    public function getCategory(): ?Categories
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categories $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
