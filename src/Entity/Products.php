@@ -91,7 +91,7 @@ class Products
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="products", cascade={"all"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
