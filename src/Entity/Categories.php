@@ -63,7 +63,7 @@ class Categories
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setCategoryId($this);
+            $product->setCategoryId($this->id);
         }
 
         return $this;

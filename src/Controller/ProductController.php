@@ -25,14 +25,13 @@ class ProductController extends Controller
         $category = new Categories();
         $category->setTitle('Category Title');
 
-        $product->setCategoryId($category);
+        $product->setCategory($category);
 
         $entityManager->persist($product);
-//        $entityManager->persist($category);
         $entityManager->flush();
 
-        $entityManager->remove($product);
-        $entityManager->flush();
+//        $entityManager->remove($product);
+//        $entityManager->flush();
 
         exit();
     }
