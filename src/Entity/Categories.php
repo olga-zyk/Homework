@@ -42,7 +42,7 @@ class Categories
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="Products", mappedBy="category_id")
+     * @ORM\OneToMany(targetEntity="Products", mappedBy="category_id", cascade="all", orphanRemoval=true)
      */
     protected $products;
 
@@ -59,27 +59,20 @@ class Categories
         return $this->products;
     }
 
-    public function addProduct(Products $product): self
+    public function addProduct(Products $product): void
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
             $product->setCategoryId($this->id);
         }
-
-        return $this;
     }
 
-    public function removeProduct(Products $product): self
+    public function removeProduct(Products $product): void
     {
         if ($this->products->contains($product)) {
             $this->products->removeElement($product);
-            // set the owning side to null (unless already changed)
-            if ($product->getCategoryId() === $this) {
-                $product->setCategoryId(null);
-            }
+            $product->setCategoryId(null);
         }
-
-        return $this;
     }
 
 }

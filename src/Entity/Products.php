@@ -37,6 +37,13 @@ class Products
      */
     private $active;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="products")
+     * @ORM\JoinColumn(name="category", referencedColumnName="id", nullable=false)
+     */
+    protected $category;
+
+
     public function getId()
     {
         return $this->id;
@@ -89,11 +96,6 @@ class Products
 
         return $this;
     }
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="products", cascade={"all"})
-     */
-    protected $category;
 
     public function getCategory(): ?Categories
     {
