@@ -18,12 +18,12 @@ class ProductController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
 
         $product = new Products();
-        $product->setTitle('Title');
+        $product->setTitle('Product1');
         $product->setPrice(100);
         $product->setActive(false);
 
         $category = new Categories();
-        $category->setTitle('Category Title');
+        $category->setTitle('Category Title 1');
 
         $product->setCategory($category);
 

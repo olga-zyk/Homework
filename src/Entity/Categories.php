@@ -24,6 +24,16 @@ class Categories
      */
     private $title;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Products", mappedBy="category_id")
+     */
+    protected $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
     public function getId()
     {
         return $this->id;
@@ -39,16 +49,6 @@ class Categories
         $this->title = $title;
 
         return $this;
-    }
-
-    /**
-     * @ORM\OneToMany(targetEntity="Products", mappedBy="category_id", cascade="all", orphanRemoval=true)
-     */
-    protected $products;
-
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
     }
 
     /**
