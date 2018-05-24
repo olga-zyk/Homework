@@ -38,7 +38,8 @@ class Products
     private $active;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="products", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="products", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     protected $category;
 

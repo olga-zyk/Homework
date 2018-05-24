@@ -25,7 +25,7 @@ class Categories
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="Products", mappedBy="category_id")
+     * @ORM\OneToMany(targetEntity="Products", mappedBy="category", orphanRemoval=true)
      */
     protected $products;
 
@@ -59,19 +59,21 @@ class Categories
         return $this->products;
     }
 
-    public function addProduct(Products $product): void
+    public function addProduct(Products $product): self
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setCategoryId($this->id);
+            $product->setCategory($this);
         }
+
+        return $this;
     }
 
     public function removeProduct(Products $product): void
     {
         if ($this->products->contains($product)) {
             $this->products->removeElement($product);
-            $product->setCategoryId(null);
+            $product->setCategory(null);
         }
     }
 
