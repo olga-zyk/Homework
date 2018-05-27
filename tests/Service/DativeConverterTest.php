@@ -18,10 +18,10 @@ class DativeConverterTest extends TestCase
   public function getConvertData()
   {
     return [
-      ['Oleg', 'Oleg'],
-      ['Jurgis', 'Jurgiui'],
-      ['Kastytis', 'Kastyčiui'],
-      ['Paulius', 'Pauliui']
+      ['Kastyčiui', 'Kastytis'],
+      ['Jurgiui', 'Jurgis'],
+      ['Pauliui', 'Paulius'],
+      ['Oleg', 'Oleg']
     ];
 
   }
@@ -29,6 +29,7 @@ class DativeConverterTest extends TestCase
   /**
    * @param $name
    * @param $expected
+   * @dataProvider getConvertData
    */
   public function testConvertData($expected, $name)
   {
@@ -36,31 +37,5 @@ class DativeConverterTest extends TestCase
     $result = $converter->convert($name);
     $this->assertEquals($expected, $result);
   }
-
-//  public function testConvertOleg()
-//  {
-//
-//    $converter = new DativeConverter();
-//    $value = $converter->convert('Oleg');
-//    $this->assertEquals('Oleg', $value);
-//
-//  }
-//
-//  public function testConvertKastytis()
-//  {
-//
-//    $converter = new DativeConverter();
-//    $value = $converter->convert('Kastytis');
-//    $this->assertEquals('Kastyčiui', $value);
-//  }
-//
-//  public function testConvertJurgis()
-//  {
-//
-//    $converter = new DativeConverter();
-//    $value = $converter->convert('Jurgis');
-//    $this->assertEquals('Jurgiui', $value);
-//
-//  }
 
 }
