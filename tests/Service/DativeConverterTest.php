@@ -31,7 +31,7 @@ class DativeConverterTest extends TestCase
    * @param $expected
    * @dataProvider getConvertData
    */
-  public function testConvertData($expected, $name)
+  public function testConvert($expected, $name)
   {
     $converter = new DativeConverter();
     $result = $converter->convert($name);
