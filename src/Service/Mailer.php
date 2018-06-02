@@ -12,6 +12,7 @@ class Mailer
     public function send($recipientEmail, $body)
     {
         // todo: implement email sending
+
         echo "\n\n Vyksta email siuntimas...";
         return null;
     }
